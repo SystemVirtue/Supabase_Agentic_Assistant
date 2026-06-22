@@ -1,0 +1,36 @@
+[project]
+name = "edge-daemon"
+version = "0.1.0"
+description = "Phase 4 Edge Daemon for the Distributed Cognitive Agent - YOLO/Whisper integration and Gateway client."
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27.0",
+    "opencv-python>=4.8.0",
+    "pydantic-settings>=2.6.0",
+    "distributed-cognitive-agent",
+]
+
+[project.optional-dependencies]
+vision = [
+    "ultralytics>=8.0.0",
+]
+audio = [
+    "openai-whisper>=20231117",
+    "pyaudio>=0.2.13",
+]
+dev = [
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.7.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["edge_daemon/tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.setuptools.packages.find]
+include = ["edge_daemon*"]

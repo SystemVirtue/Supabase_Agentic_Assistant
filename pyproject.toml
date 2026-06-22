@@ -1,0 +1,48 @@
+[project]
+name = "distributed-cognitive-agent"
+version = "0.1.0"
+description = "Phase 1 foundation for the Distributed Cognitive Agent event fabric and ingestion gateway."
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "nats-py>=2.9.0",
+  "pydantic-settings>=2.6.0",
+  "uvicorn[standard]>=0.30.0",
+  "uuid6>=2024.7.10",
+  "asyncpg>=0.29.0",
+  "redis>=5.0.0",
+  "protobuf>=4.25.0",
+  "langchain-core>=0.1.0",
+  "langgraph>=0.0.20",
+  "litellm>=1.40.0",
+  "httpx>=0.27.0",
+  "opencv-python>=4.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "pytest-asyncio>=0.24.0",
+  "ruff>=0.7.0",
+]
+proto = [
+  "grpcio-tools>=1.68.0",
+]
+vision = [
+  "ultralytics>=8.0.0",
+]
+audio = [
+  "openai-whisper>=20231117",
+  "pyaudio>=0.2.13",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["gateway/tests", "world_state_service/tests", "cognitive_engine/tests", "edge_daemon/tests", "agent_lifecycle_manager/tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.setuptools.packages.find]
+include = ["gateway*", "world_state_service*", "cognitive_engine*", "edge_daemon*", "agent_lifecycle_manager*"]

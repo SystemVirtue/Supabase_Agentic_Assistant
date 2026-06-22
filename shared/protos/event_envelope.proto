@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package dca.events.v1;
+
+message EventEnvelope {
+  string event_id = 1;
+  string event_type = 2;
+  string schema_version = 3;
+  string source = 4;
+  int64 timestamp = 5;
+  string correlation_id = 6;
+  string causation_id = 7;
+  string session_id = 8;
+  string entity_id = 9;
+  map<string, string> tags = 10;
+  bytes payload = 11;
+}
+

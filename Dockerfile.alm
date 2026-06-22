@@ -1,0 +1,36 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy pyproject.toml files
+COPY pyproject.toml .
+COPY agent_lifecycle_manager/pyproject.toml ./agent_lifecycle_manager/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -e ".[dev]"
+RUN pip install --no-cache-dir -e "./agent_lifecycle_manager[dev]"
+
+# Copy application code
+COPY gateway ./gateway
+COPY shared ./shared
+COPY world_state_service ./world_state_service
+COPY cognitive_engine ./cognitive_engine
+COPY agent_lifecycle_manager ./agent_lifecycle_manager
+
+# Generate protobuf bindings
+RUN if [ -f shared/scripts/generate_protos.sh ]; then \
+    bash shared/scripts/generate_protos.sh; \
+    fi
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+# Run the application
+CMD ["python", "-m", "agent_lifecycle_manager.app.main"]

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: supabase-agentic-assistant-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_SUPABASE_URL
+        value: https://zgelhzaeoaxhpubalyvz.supabase.co
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+      - key: VITE_GATEWAY_FUNCTION_URL
+        value: https://zgelhzaeoaxhpubalyvz.supabase.co/functions/v1/gateway
+      - key: VITE_COGNITIVE_ENGINE_FUNCTION_URL
+        value: https://zgelhzaeoaxhpubalyvz.supabase.co/functions/v1/cognitive-engine

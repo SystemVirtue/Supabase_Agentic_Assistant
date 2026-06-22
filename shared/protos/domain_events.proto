@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package dca.events.v1;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+enum BeliefUpdateType {
+  BELIEF_UPDATE_TYPE_UNSPECIFIED = 0;
+  BELIEF_UPDATE_TYPE_INITIAL = 1;
+  BELIEF_UPDATE_TYPE_UPDATE = 2;
+  BELIEF_UPDATE_TYPE_DECAY = 3;
+  BELIEF_UPDATE_TYPE_CORRECTION = 4;
+}
+
+message BeliefUpdated {
+  string entity_id = 1;
+  string attribute = 2;
+  google.protobuf.Value value = 3;
+  float confidence = 4;
+  string source_event_id = 5;
+  BeliefUpdateType update_type = 6;
+  repeated string evidence_ids = 7;
+}
+
+message FactAsserted {
+  string fact_id = 1;
+  string entity_id = 2;
+  string attribute = 3;
+  google.protobuf.Value value = 4;
+  repeated string evidence_ids = 5;
+  google.protobuf.Timestamp valid_from = 6;
+}
+
+message RoutingDecision {
+  string request_id = 1;
+  string complexity_class = 2;
+  string model_selected = 3;
+  float routing_confidence = 4;
+  int32 estimated_input_tokens = 5;
+  float estimated_cost_usd = 6;
+}
+
+message ConflictDetected {
+  string entity_id = 1;
+  string attribute = 2;
+  repeated string candidate_belief_event_ids = 3;
+  float secondary_trust_score = 4;
+}
+
