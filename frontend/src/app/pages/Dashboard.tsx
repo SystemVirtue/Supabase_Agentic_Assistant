@@ -149,11 +149,11 @@ export function Dashboard() {
             <CardTitle>Service Status</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
-            <ServiceStatus name="NATS JetStream" latency="12ms" status="ok" />
-            <ServiceStatus name="PostgreSQL" latency="45ms" status="ok" />
-            <ServiceStatus name="Redis Cache" latency="2ms" status="ok" />
-            <ServiceStatus name="Ollama (Local)" latency="120ms" status="ok" />
-            <ServiceStatus name="OpenAI Gateway" latency="400ms" status="ok" />
+            <ServiceStatus name="Supabase Edge Functions" latency="45ms" status="ok" />
+            <ServiceStatus name="PostgreSQL" latency="12ms" status="ok" />
+            <ServiceStatus name="OpenRouter API" latency="200ms" status="ok" />
+            <ServiceStatus name="Realtime" latency="5ms" status="ok" />
+            <ServiceStatus name="Auth" latency="15ms" status="ok" />
           </CardContent>
         </Card>
       </div>
@@ -202,7 +202,7 @@ function SummaryCard({ title, value, icon: Icon, trend, subtext, color, alert, l
         {(subtext || alert) && (
           <div className="flex items-center justify-between text-xs mt-1">
             {subtext && <span className="text-[var(--dca-text-tertiary)]">{subtext}</span>}
-            {alert && <Badge variant="destructive" className="text-[10px] px-1.5">1 Conflict</Badge>}
+            {alert && <Badge variant="blocked" className="text-[10px] px-1.5">1 Conflict</Badge>}
           </div>
         )}
         <div className="text-[10px] text-[var(--dca-text-tertiary)] mt-2">Updated just now</div>

@@ -8,7 +8,8 @@ import {
   CircleDollarSign,
   Settings,
   Bell,
-  Menu
+  Menu,
+  MessageSquare
 } from 'lucide-react';
 import { cn } from '../ui/utils';
 import { useWebSocket } from '../../../hooks/useWebSocket';
@@ -22,6 +23,7 @@ export function AppLayout() {
 
   const navItems = [
     { name: 'Dashboard', path: '/', icon: LayoutDashboard },
+    { name: 'Chat', path: '/chat', icon: MessageSquare },
     { name: 'World State', path: '/world-state', icon: Globe },
     { name: 'Agent Lifecycle', path: '/agents', icon: Bot },
     { name: 'Conflict Resolution', path: '/conflicts', icon: BrainCircuit },

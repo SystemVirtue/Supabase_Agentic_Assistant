@@ -1,0 +1,161 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  
+  --dca-bg-primary: #0F172A;
+  --dca-bg-secondary: #1E293B;
+  --dca-bg-tertiary: #334155;
+  --dca-text-primary: #F8FAFC;
+  --dca-text-secondary: #CBD5E1;
+  --dca-text-tertiary: #64748B;
+  --dca-accent-primary: #22D3EE;
+  --dca-accent-secondary: #818CF8;
+  --dca-success: #34D399;
+  --dca-warning: #F59E0B;
+  --dca-error: #EF4444;
+  --dca-info: #60A5FA;
+
+  --background: var(--dca-bg-primary);
+  --foreground: var(--dca-text-primary);
+  --card: var(--dca-bg-secondary);
+  --card-foreground: var(--dca-text-primary);
+  --popover: var(--dca-bg-secondary);
+  --popover-foreground: var(--dca-text-primary);
+  --primary: var(--dca-accent-primary);
+  --primary-foreground: #000000;
+  --secondary: var(--dca-bg-tertiary);
+  --secondary-foreground: var(--dca-text-primary);
+  --muted: var(--dca-bg-tertiary);
+  --muted-foreground: var(--dca-text-tertiary);
+  --accent: var(--dca-accent-primary);
+  --accent-foreground: #000000;
+  --destructive: var(--dca-error);
+  --destructive-foreground: #ffffff;
+  --border: var(--dca-bg-tertiary);
+  --input: var(--dca-bg-tertiary);
+  --ring: var(--dca-accent-primary);
+
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: var(--dca-bg-primary);
+  --foreground: var(--dca-text-primary);
+  --card: var(--dca-bg-secondary);
+  --card-foreground: var(--dca-text-primary);
+  --popover: var(--dca-bg-secondary);
+  --popover-foreground: var(--dca-text-primary);
+  --primary: var(--dca-accent-primary);
+  --primary-foreground: #000000;
+  --secondary: var(--dca-bg-tertiary);
+  --secondary-foreground: var(--dca-text-primary);
+  --muted: var(--dca-bg-tertiary);
+  --muted-foreground: var(--dca-text-tertiary);
+  --accent: var(--dca-accent-primary);
+  --accent-foreground: #000000;
+  --destructive: var(--dca-error);
+  --destructive-foreground: #ffffff;
+  --border: var(--dca-bg-tertiary);
+  --input: var(--dca-bg-tertiary);
+  --ring: var(--dca-accent-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-dca-bg-primary: var(--dca-bg-primary);
+  --color-dca-bg-secondary: var(--dca-bg-secondary);
+  --color-dca-bg-tertiary: var(--dca-bg-tertiary);
+  --color-dca-text-primary: var(--dca-text-primary);
+  --color-dca-text-secondary: var(--dca-text-secondary);
+  --color-dca-text-tertiary: var(--dca-text-tertiary);
+  --color-dca-accent-primary: var(--dca-accent-primary);
+  --color-dca-accent-secondary: var(--dca-accent-secondary);
+  --color-dca-success: var(--dca-success);
+  --color-dca-warning: var(--dca-warning);
+  --color-dca-error: var(--dca-error);
+  --color-dca-info: var(--dca-info);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Force dark theme default appearance */
+    color-scheme: dark;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+}
