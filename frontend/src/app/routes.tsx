@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router'
 import AuroraMvp from './pages/AuroraMvp'
 import ProviderLab from './pages/ProviderLab'
+import Profile from './pages/Profile'
 import { AppLayout } from './components/layout/AppLayout'
 import { Dashboard } from './pages/Dashboard'
 import { WorldState } from './pages/WorldState'
@@ -13,6 +14,7 @@ import Chat from './pages/Chat'
 export const router = createBrowserRouter([
   { path: '/', Component: AuroraMvp },
   { path: '/mvp', Component: AuroraMvp },
+  { path: '/profile', Component: Profile },
   { path: '/providers', Component: ProviderLab },
   { path: '/legacy', Component: AppLayout, children: [
     { index: true, Component: Chat }, { path: 'chat', Component: Chat }, { path: 'dashboard', Component: Dashboard },
